@@ -971,27 +971,28 @@
         <p class="join-age r d4">Open to players <span>16 years and older</span></p>
       </div>
 
-      <div class="reg-form r d2" id="reg-form-container">
+      <form class="reg-form r d2" id="reg-form-container" name="registration" data-netlify="true">
+        <input type="hidden" name="form-name" value="registration">
         <h3>Register Now</h3>
         <div id="reg-fields">
           <div class="form-group">
             <label for="reg-name">Full Name</label>
-            <input type="text" id="reg-name" placeholder="Your full name" autocomplete="name">
+            <input type="text" id="reg-name" name="name" placeholder="Your full name" autocomplete="name">
             <span class="form-error" id="err-name">Please enter your name.</span>
           </div>
           <div class="form-group">
             <label for="reg-email">Email Address</label>
-            <input type="email" id="reg-email" placeholder="you@example.com" autocomplete="email">
+            <input type="email" id="reg-email" name="email" placeholder="you@example.com" autocomplete="email">
             <span class="form-error" id="err-email">Please enter a valid email.</span>
           </div>
           <div class="form-group">
             <label for="reg-phone">Phone Number</label>
-            <input type="tel" id="reg-phone" placeholder="+1 (506) 000-0000" autocomplete="tel">
+            <input type="tel" id="reg-phone" name="phone" placeholder="+1 (506) 000-0000" autocomplete="tel">
             <span class="form-error" id="err-phone">Please enter a phone number.</span>
           </div>
           <div class="form-group">
             <label for="reg-role">I want to join as</label>
-            <select id="reg-role">
+            <select id="reg-role" name="role">
               <option value="">Select a role...</option>
               <option value="player">Player</option>
               <option value="captain">Captain</option>
@@ -1000,20 +1001,20 @@
             <span class="form-error" id="err-role">Please select a role.</span>
           </div>
           <div class="form-check">
-            <input type="checkbox" id="reg-rules">
+            <input type="checkbox" id="reg-rules" name="agreed-to-rules" value="yes">
             <label for="reg-rules">
               I've read and agree to the <a href="#">club rules and code of conduct</a>.
             </label>
           </div>
           <span class="form-error" id="err-rules" style="margin-top:-14px;margin-bottom:14px;display:none;">You must agree to the club rules.</span>
-          <button class="btn-submit" id="reg-submit" onclick="submitReg()">Register Now — $30</button>
+          <button type="button" class="btn-submit" id="reg-submit" onclick="submitReg()">Register Now — $30</button>
         </div>
         <div class="form-success" id="reg-success">
           <div class="success-icon">🏏</div>
           <h4>You're In!</h4>
           <p>We'll be in touch soon with everything you need for the 2026 season.</p>
         </div>
-      </div>
+      </form>
 
     </div>
   </div>
@@ -1054,31 +1055,32 @@
         <p class="sponsor-note r d5">Packages available for every budget. Get in touch and we'll find the right fit.</p>
       </div>
 
-      <div class="sponsor-form r d2" id="spon-form-container">
+      <form class="sponsor-form r d2" id="spon-form-container" name="sponsorship" data-netlify="true">
+        <input type="hidden" name="form-name" value="sponsorship">
         <h3>Get the Package</h3>
         <div id="spon-fields">
           <div class="form-group">
             <label for="spon-biz">Business Name</label>
-            <input type="text" id="spon-biz" placeholder="Your business name">
+            <input type="text" id="spon-biz" name="business-name" placeholder="Your business name">
             <span class="form-error" id="serr-biz">Please enter your business name.</span>
           </div>
           <div class="form-group">
             <label for="spon-contact">Contact Name</label>
-            <input type="text" id="spon-contact" placeholder="Your name" autocomplete="name">
+            <input type="text" id="spon-contact" name="contact-name" placeholder="Your name" autocomplete="name">
             <span class="form-error" id="serr-contact">Please enter a contact name.</span>
           </div>
           <div class="form-group">
             <label for="spon-email">Email Address</label>
-            <input type="email" id="spon-email" placeholder="you@business.com" autocomplete="email">
+            <input type="email" id="spon-email" name="email" placeholder="you@business.com" autocomplete="email">
             <span class="form-error" id="serr-email">Please enter a valid email.</span>
           </div>
           <div class="form-group">
             <label for="spon-phone">Phone <span style="color:var(--muted);font-weight:300;letter-spacing:0">(optional)</span></label>
-            <input type="tel" id="spon-phone" placeholder="+1 (506) 000-0000" autocomplete="tel">
+            <input type="tel" id="spon-phone" name="phone" placeholder="+1 (506) 000-0000" autocomplete="tel">
           </div>
           <div class="form-group">
             <label for="spon-tier">Preferred Tier</label>
-            <select id="spon-tier">
+            <select id="spon-tier" name="tier">
               <option value="">Select a tier...</option>
               <option value="title">Title Sponsor — $1,500</option>
               <option value="gold">Gold Sponsor — $750</option>
@@ -1088,14 +1090,14 @@
             </select>
             <span class="form-error" id="serr-tier">Please select a preferred tier.</span>
           </div>
-          <button class="btn-submit" onclick="submitSponsor()">Send Inquiry</button>
+          <button type="button" class="btn-submit" onclick="submitSponsor()">Send Inquiry</button>
         </div>
         <div class="form-success" id="spon-success">
           <div class="success-icon">🤝</div>
           <h4>Thank You!</h4>
           <p>We'll send you the full sponsorship package shortly. Looking forward to partnering with you.</p>
         </div>
-      </div>
+      </form>
 
     </div>
   </div>
@@ -1335,8 +1337,22 @@
     }
 
     if (ok) {
-      document.getElementById('reg-fields').style.display  = 'none';
-      document.getElementById('reg-success').style.display = 'block';
+      const form = document.getElementById('reg-form-container');
+      const btn  = document.getElementById('reg-submit');
+      btn.textContent = 'Sending...'; btn.disabled = true;
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      })
+      .then(() => {
+        document.getElementById('reg-fields').style.display  = 'none';
+        document.getElementById('reg-success').style.display = 'block';
+      })
+      .catch(() => {
+        btn.textContent = 'Register Now — $30'; btn.disabled = false;
+        alert('Something went wrong. Please email us directly at tapeballproscricketclub@gmail.com');
+      });
     }
   }
 
@@ -1360,8 +1376,22 @@
     validate(tier,    'serr-tier',    el => el.value !== '');
 
     if (ok) {
-      document.getElementById('spon-fields').style.display  = 'none';
-      document.getElementById('spon-success').style.display = 'block';
+      const form = document.getElementById('spon-form-container');
+      const btn  = form.querySelector('.btn-submit');
+      btn.textContent = 'Sending...'; btn.disabled = true;
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      })
+      .then(() => {
+        document.getElementById('spon-fields').style.display  = 'none';
+        document.getElementById('spon-success').style.display = 'block';
+      })
+      .catch(() => {
+        btn.textContent = 'Send Inquiry'; btn.disabled = false;
+        alert('Something went wrong. Please email us at tapeballproscricketclub@gmail.com');
+      });
     }
   }
 </script>
