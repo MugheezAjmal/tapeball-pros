@@ -1,0 +1,13 @@
+# Netlify configuration for Tapeball Pros Cricket Club Inc.
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Prevent your site from being embedded in iframes (clickjacking protection)
+    X-Frame-Options = "DENY"
+    # Prevent browsers from guessing file types (MIME sniffing protection)
+    X-Content-Type-Options = "nosniff"
+    # Control how much referrer info is shared when clicking links
+    Referrer-Policy = "no-referrer-when-downgrade"
+    # Disable access to camera, microphone, location — not needed for this site
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
