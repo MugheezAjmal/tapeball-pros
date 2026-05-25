@@ -60,7 +60,7 @@ const newsItems = [
     date: 'March 1, 2026',
     category: 'Announcement',
     title: '2026 Season Registration Now Open',
-    excerpt: 'The 2026 tapeball season is officially here. Register your team before May 15 to secure your spot in the tournament.',
+    excerpt: 'The Saint John Tapeball Tournament 2026 is officially announced. Only 8 team spots available — first come, first served. Register now before it\'s too late.',
     imageId: '163397',
   },
   {
@@ -73,8 +73,8 @@ const newsItems = [
   {
     date: 'January 28, 2026',
     category: 'Tournament',
-    title: 'Grand Final Venue Confirmed: Rockwood Park',
-    excerpt: "The 2026 Grand Final will be held at Rockwood Park on July 19. Mark your calendars — it's going to be electric.",
+    title: 'Tournament Venue Confirmed: SJ Exhibition Raceway Ground',
+    excerpt: 'The 2026 Saint John Tapeball Tournament will be held on July 4 at SJ Exhibition Raceway Ground (beside Popeyes). $400 cash prize for the winning team. #SJTT2026',
     imageId: '4974920',
   },
 ]
@@ -87,9 +87,9 @@ const events = [
     imageId: '163397',
   },
   {
-    name: 'Mid-Season Tournament',
-    date: 'July 12–13, 2026',
-    location: 'Lily Lake Road Fields',
+    name: 'Saint John Tapeball Tournament 2026',
+    date: 'July 4, 2026',
+    location: 'SJ Exhibition Raceway Ground',
     imageId: '8007380',
   },
   {
@@ -111,7 +111,7 @@ const clubFormats = [
   {
     icon: '🏆',
     title: 'Season Tournament',
-    desc: '2026 tournament open for registration. 8 teams, 8 overs, pure glory.',
+    desc: 'July 4, 2026 · SJ Exhibition Raceway Ground. 8 teams, 6 overs, $400 cash prize.',
     cta: 'Register Team →',
     href: '/tournament',
   },
