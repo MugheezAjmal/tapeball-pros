@@ -1,0 +1,49 @@
+@import "tailwindcss";
+@import "../../docs/design/tokens.css";
+
+@theme inline {
+  /* Pitch (greens) */
+  --color-pitch-950: var(--color-pitch-950);
+  --color-pitch-900: var(--color-pitch-900);
+  --color-pitch-800: var(--color-pitch-800);
+  --color-pitch-700: var(--color-pitch-700);
+  --color-pitch-600: var(--color-pitch-600);
+  --color-pitch-500: var(--color-pitch-500);
+  --color-pitch-400: var(--color-pitch-400);
+  --color-pitch-300: var(--color-pitch-300);
+  --color-pitch-200: var(--color-pitch-200);
+  --color-pitch-100: var(--color-pitch-100);
+  --color-pitch-50:  var(--color-pitch-50);
+
+  /* Ball (ambers) */
+  --color-ball-950: var(--color-ball-950);
+  --color-ball-900: var(--color-ball-900);
+  --color-ball-800: var(--color-ball-800);
+  --color-ball-700: var(--color-ball-700);
+  --color-ball-600: var(--color-ball-600);
+  --color-ball-500: var(--color-ball-500);
+  --color-ball-400: var(--color-ball-400);
+  --color-ball-300: var(--color-ball-300);
+  --color-ball-200: var(--color-ball-200);
+  --color-ball-100: var(--color-ball-100);
+  --color-ball-50:  var(--color-ball-50);
+
+  /* Chalk (neutrals) */
+  --color-chalk-950: var(--color-chalk-950);
+  --color-chalk-900: var(--color-chalk-900);
+  --color-chalk-800: var(--color-chalk-800);
+  --color-chalk-700: var(--color-chalk-700);
+  --color-chalk-600: var(--color-chalk-600);
+  --color-chalk-500: var(--color-chalk-500);
+  --color-chalk-400: var(--color-chalk-400);
+  --color-chalk-300: var(--color-chalk-300);
+  --color-chalk-200: var(--color-chalk-200);
+  --color-chalk-100: var(--color-chalk-100);
+  --color-chalk-50:  var(--color-chalk-50);
+
+  /* Typography */
+  --font-display:   var(--font-display);
+  --font-editorial: var(--font-editorial);
+  --font-body:      var(--font-body);
+  --font-stat:      var(--font-stat);
+}
